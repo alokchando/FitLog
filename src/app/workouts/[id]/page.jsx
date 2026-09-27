@@ -1,4 +1,6 @@
 import { getWorkout } from "@/api/workoutApi";
+import AddPlanBtn from "@/components/AddPlanBtn";
+import SaveLaterBtn from "@/components/SaveLaterBtn";
 import Image from "next/image";
 
 const WorkoutDetails = async ({ params }) => {
@@ -8,7 +10,7 @@ const WorkoutDetails = async ({ params }) => {
   return (
     <main className="min-h-screen bg-[#0b0f17] px-4 py-8 text-gray-100 md:px-8">
       <div className="mx-auto grid w-full max-w-5xl grid-cols-1 gap-8 rounded-2xl border border-gray-800 bg-[#0f141d] p-6 shadow-2xl md:grid-cols-2">
-        <div className="min-h-[350px] w-full md:min-h-[450px]">
+        <div className="min-h-87.5 w-full md:min-h-112.5">
           <Image
             src={workout.image}
             alt={workout.name}
@@ -117,13 +119,10 @@ const WorkoutDetails = async ({ params }) => {
           </div>
 
           <div className="flex flex-wrap items-center gap-3 pt-2">
-            <button className="rounded-lg bg-[#ccff00] px-4 py-2.5 text-xs font-semibold text-black transition-colors duration-200 hover:bg-[#b3e600]">
-              Add to today's plan
-            </button>
+            
+            <AddPlanBtn workout={workout} />
 
-            <button className="rounded-lg border border-gray-700 px-4 py-2.5 text-xs font-medium text-gray-300 transition-colors duration-200 hover:bg-gray-800">
-              Save for later
-            </button>
+           <SaveLaterBtn workout={workout} />
           </div>
         </div>
       </div>
