@@ -3,18 +3,27 @@
 import { workoutContext } from "@/context/context";
 import React, { useContext } from "react";
 import { CalendarPlus } from "lucide-react";
+import { toast } from "react-toastify";
 
 const AddPlanBtn = ({ workout }) => {
-  const { saved, setSaved } = useContext(workoutContext);
+  const { saved, setSaved,later } = useContext(workoutContext);
 
   const handleAdd = () => {
     const alreadyAdded = saved.some((item) => item.id === workout.id);
 
+    if (later.some((item) => item.id === workout.id)) {
+            toast.error("Workout is already saved.");
+      return
+    }
+
+
     if (alreadyAdded) {
+       toast.error("Workout is already in today's plan.");
       return;
     }
 
     setSaved([...saved, workout]);
+    toast.success("Workout added to today's plan!");
   };
 
   return (

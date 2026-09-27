@@ -4,18 +4,25 @@ import { useContext } from "react";
 import { workoutContext } from "@/context/context";
 import React from "react";
 import { Bookmark } from "lucide-react";
+import { toast } from "react-toastify";
 
 const SaveLaterBtn = ({ workout }) => {
   const { later, setLater } = useContext(workoutContext);
   const { saved, setSaved } = useContext(workoutContext);
 
   const handleSaveLater = () => {
-    const alreadySaved = saved.some((item) => item.id === workout.id);
+    if (saved.some((item) => item.id === workout.id)) {
+      toast.error("Workout is already in today's plan.");
+      return
+    }
+    const alreadySaved = later.some((item) => item.id === workout.id);
 
     if (alreadySaved) {
+      toast.error("Workout is already saved.");
       return;
     }
     setLater([...later, workout]);
+    toast.success("Workout saved for later!");
   };
 
   return (
