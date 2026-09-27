@@ -26,6 +26,18 @@ const MyPlan = () => {
     return 0;
   });
 
+  const totalDuration = workouts.reduce(
+    (total, workout) => total + Number(workout.duration),
+    0,
+  );
+
+  const totalCalories = workouts.reduce(
+    (total, workout) => total + Number(workout.caloriesBurned),
+    0,
+  );
+
+  const totalExercises = workouts.length;
+
   const handleRemove = (id) => {
     if (activeTab === "plan") {
       setSaved(saved.filter((workout) => workout.id !== id));
@@ -54,7 +66,7 @@ const MyPlan = () => {
             <p className="text-xs uppercase tracking-widest text-gray-400">
               Exercises
             </p>
-            <p className="mt-2 text-3xl font-bold">{saved.length}</p>
+            <p className="mt-2 text-3xl font-bold">{totalExercises}</p>
           </div>
 
           <div className="rounded-xl border border-gray-800 bg-[#151b26] p-5">
@@ -62,10 +74,7 @@ const MyPlan = () => {
               Minutes
             </p>
             <p className="mt-2 text-3xl font-bold">
-              {saved.reduce(
-                (total, workout) => total + Number(workout.duration),
-                0,
-              )}
+              {totalDuration}
             </p>
           </div>
 
@@ -74,10 +83,7 @@ const MyPlan = () => {
               Calories
             </p>
             <p className="mt-2 text-3xl font-bold">
-              {saved.reduce(
-                (total, workout) => total + Number(workout.caloriesBurned),
-                0,
-              )}
+              {totalCalories}
             </p>
           </div>
         </div>
