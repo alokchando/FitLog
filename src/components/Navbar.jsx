@@ -4,7 +4,8 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useContext } from "react";
 import { workoutContext } from "@/context/context";
-
+import logo from "@/assets/logo.png";
+import Image from "next/image";
 const Navbar = () => {
   const pathname = usePathname();
   const { saved, later } = useContext(workoutContext);
@@ -14,16 +15,14 @@ const Navbar = () => {
   return (
     <nav className="border-b border-gray-800 bg-[#0b0f17]">
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6">
-        
-        {/* Logo */}
-        <Link
-          href="/"
-          className="text-2xl font-extrabold tracking-wide text-white"
-        >
-          Fit<span className="text-[#ccff00]">Log</span>
-        </Link>
+        <div className="flex gap-2 align-middle">
 
-        {/* Navigation */}
+        <Image src={logo} alt="FitLog Logo" width={40} height={40} />
+        <span className="text-lg font-extrabold tracking-wider text-white">
+            FITLOG
+          </span>
+        </div>
+
         <div className="flex items-center gap-2">
           <Link
             href="/"
@@ -48,15 +47,20 @@ const Navbar = () => {
           </Link>
         </div>
 
-        {/* Counters */}
         <div className="flex items-center gap-2">
-          <div className="rounded-full bg-[#ccff00] px-3 py-1.5 text-xs font-bold text-black">
+          <Link
+            href="my-plan"
+            className="rounded-full bg-[#ccff00] px-3 py-1.5 text-xs font-bold text-black transition hover:bg-[#b3e600]"
+          >
             Plan {saved.length}
-          </div>
+          </Link>
 
-          <div className="rounded-full border border-gray-600 px-3 py-1.5 text-xs font-medium text-gray-300">
+          <Link
+            href="my-plan"
+            className="rounded-full border border-gray-600 px-3 py-1.5 text-xs font-medium text-gray-300 transition hover:bg-gray-800"
+          >
             Saved {later.length}
-          </div>
+          </Link>
         </div>
       </div>
     </nav>
