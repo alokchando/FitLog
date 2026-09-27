@@ -48,14 +48,14 @@ const Navbar = () => {
 
         <div className="flex items-center gap-2">
           <Link
-            href="my-plan"
+            href="/workouts/my-plan"
             className="rounded-full bg-[#ccff00] px-3 py-1.5 text-xs font-bold text-black transition hover:bg-[#b3e600]"
           >
             Plan {saved.length}
           </Link>
 
           <Link
-            href="my-plan"
+            href="/workouts/my-plan"
             className="rounded-full border border-gray-600 px-3 py-1.5 text-xs font-medium text-gray-300 transition hover:bg-gray-800"
           >
             Saved {later.length}
