@@ -16,9 +16,8 @@ const Navbar = () => {
     <nav className="border-b border-gray-800 bg-[#0b0f17]">
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6">
         <div className="flex gap-2 align-middle">
-
-        <Image src={logo} alt="FitLog Logo" width={40} height={40} />
-        <span className="text-lg font-extrabold tracking-wider text-white">
+          <Image src={logo} alt="FitLog Logo" width={40} height={40} />
+          <span className="text-lg font-extrabold tracking-wider text-white">
             FITLOG
           </span>
         </div>

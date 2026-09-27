@@ -6,17 +6,14 @@ import React from "react";
 
 const SaveLaterBtn = ({ workout }) => {
   const { later, setLater } = useContext(workoutContext);
-    const { saved, setSaved } = useContext(workoutContext);
-
+  const { saved, setSaved } = useContext(workoutContext);
 
   const handleSaveLater = () => {
-     const alreadySaved = saved.some((item) => item.id === workout.id);
+    const alreadySaved = saved.some((item) => item.id === workout.id);
 
     if (alreadySaved) {
       return;
     }
-;
-
     setLater([...later, workout]);
   };
 

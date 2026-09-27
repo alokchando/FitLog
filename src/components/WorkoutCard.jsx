@@ -5,7 +5,10 @@ import { Clock3, Flame, Star } from "lucide-react";
 
 const WorkoutCard = ({ workouts }) => {
   return (
-    <section className="mx-auto max-w-7xl px-4 py-10 sm:px-6 sm:py-14">
+    <section
+      id="workouts"
+      className="mx-auto max-w-7xl px-4 py-10 sm:px-6 sm:py-14"
+    >
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {workouts.map((workout) => (
           <Link href={`/workouts/${workout.id}`} key={workout.id}>
@@ -21,7 +24,7 @@ const WorkoutCard = ({ workouts }) => {
                 {workout.muscleGroups.map((muscle) => (
                   <span
                     key={muscle}
-                    className="rounded-full bg-green-500 px-3 py-1 text-xs font-medium text-[#333]"
+                    className="rounded-full bg-[#b3e600] px-3 py-1 text-xs font-medium text-[#333]"
                   >
                     {muscle}
                   </span>

@@ -73,18 +73,14 @@ const MyPlan = () => {
             <p className="text-xs uppercase tracking-widest text-gray-400">
               Minutes
             </p>
-            <p className="mt-2 text-3xl font-bold">
-              {totalDuration}
-            </p>
+            <p className="mt-2 text-3xl font-bold">{totalDuration}</p>
           </div>
 
           <div className="rounded-xl border border-gray-800 bg-[#151b26] p-5">
             <p className="text-xs uppercase tracking-widest text-gray-400">
               Calories
             </p>
-            <p className="mt-2 text-3xl font-bold">
-              {totalCalories}
-            </p>
+            <p className="mt-2 text-3xl font-bold">{totalCalories}</p>
           </div>
         </div>
 
