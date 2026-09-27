@@ -3,9 +3,9 @@
 import { useContext, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Clock3, Flame, Star, ChevronDown } from "lucide-react";
+import { Clock3, Flame, Star, ChevronDown,Check, X  } from "lucide-react";
 import { workoutContext } from "@/context/context";
-
+import { toast } from "react-toastify";
 const MyPlan = () => {
   const { saved, setSaved, later, setLater } = useContext(workoutContext);
   const [activeTab, setActiveTab] = useState("plan");
@@ -44,10 +44,12 @@ const MyPlan = () => {
     } else {
       setLater(later.filter((workout) => workout.id !== id));
     }
+     toast.success("Workout removed.");
   };
 
   const handleDone = (id) => {
     setSaved(saved.filter((workout) => workout.id !== id));
+    toast.success("Workout marked as done!");
   };
 
   return (
@@ -197,8 +199,9 @@ const MyPlan = () => {
                   {activeTab === "plan" && (
                     <button
                       onClick={() => handleDone(workout.id)}
-                      className="rounded-lg bg-[#ccff00] px-4 py-2 text-xs font-bold text-black"
+                      className=" flex items-center gap-2 rounded-lg bg-[#ccff00] px-4 py-2 text-xs font-bold text-black"
                     >
+                      <Check size={16} />
                       Mark as Done
                     </button>
                   )}
@@ -207,7 +210,7 @@ const MyPlan = () => {
                     onClick={() => handleRemove(workout.id)}
                     className="rounded-lg border border-red-900 px-4 py-2 text-xs font-bold text-red-400 hover:bg-red-950"
                   >
-                    X
+                    <X size={18} />
                   </button>
                 </div>
               </div>
