@@ -3,13 +3,15 @@
 import { useContext, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Clock3, Flame, Star, ChevronDown,Check, X  } from "lucide-react";
+import { Clock3, Flame, Star, ChevronDown, Check, X } from "lucide-react";
 import { workoutContext } from "@/context/context";
 import { toast } from "react-toastify";
 const MyPlan = () => {
   const { saved, setSaved, later, setLater } = useContext(workoutContext);
+
   const [activeTab, setActiveTab] = useState("plan");
   const [sortBy, setSortBy] = useState("duration");
+
   const workouts = [...(activeTab === "plan" ? saved : later)].sort((a, b) => {
     if (sortBy === "duration") {
       return Number(a.duration) - Number(b.duration);
@@ -44,7 +46,7 @@ const MyPlan = () => {
     } else {
       setLater(later.filter((workout) => workout.id !== id));
     }
-     toast.success("Workout removed.");
+    toast.success("Workout removed.");
   };
 
   const handleDone = (id) => {
